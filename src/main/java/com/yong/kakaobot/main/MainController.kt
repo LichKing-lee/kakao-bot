@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.client.RestTemplate
 
 @RestController
 class MainController {
@@ -15,7 +16,10 @@ class MainController {
 
     @PostMapping("/message")
     fun message(@RequestBody request: MessageRequest): MessageResponse {
-        println(request)
+        val clientId: String = "z0z1bsbO8AeOgIZejE9P"
+        val clientSecret: String = "JT7cisjNYQ"
+        val restTemplate: RestTemplate = RestTemplate()
+        restTemplate.getForEntity("", String::class.java)
         return MessageResponse(request.content?: "")
     }
 }
