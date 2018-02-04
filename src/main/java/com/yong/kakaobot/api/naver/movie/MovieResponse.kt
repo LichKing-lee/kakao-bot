@@ -1,9 +1,10 @@
 package com.yong.kakaobot.api.naver.movie
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize
+import com.yong.kakaobot.api.naver.movie.support.LocalDateTimeDeserializer
 import java.time.LocalDateTime
-import java.util.*
 
-data class MovieResponse(val lastBuildDate: LocalDateTime,
+data class MovieResponse(@JsonDeserialize(using = LocalDateTimeDeserializer::class) val lastBuildDate: LocalDateTime,
                          val total:Int,
                          val start:Int,
                          val display:Int,
