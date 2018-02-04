@@ -1,5 +1,9 @@
 package com.yong.kakaobot.support
 
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule
 import com.yong.kakaobot.api.naver.movie.MovieResponse
 import junit.framework.Assert.assertEquals
 import org.jetbrains.spek.api.Spek
@@ -11,6 +15,8 @@ import org.springframework.http.ResponseEntity
 import org.springframework.http.client.ClientHttpRequestExecution
 import org.springframework.http.client.ClientHttpRequestInterceptor
 import org.springframework.http.client.ClientHttpResponse
+import org.springframework.http.converter.HttpMessageConverter
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.client.RestTemplate
 
 class NaverSearchTest: Spek({
@@ -32,6 +38,13 @@ class NaverSearchTest: Spek({
                     }
             )
 
+            val element = MappingJackson2HttpMessageConverter()
+            val jacksonObjectMapper = jacksonObjectMapper()
+            jacksonObjectMapper.registerModule(ParameterNamesModule())
+            jacksonObjectMapper.registerModule(Jdk8Module())
+            jacksonObjectMapper.registerModule(JavaTimeModule())
+            element.objectMapper = jacksonObjectMapper
+            restTemplate.messageConverters.add(0, element)
             restTemplate.interceptors = list
 
             val response: ResponseEntity<MovieResponse> = restTemplate.getForEntity("${api}?query=관상", MovieResponse::class.java)
