@@ -16,10 +16,11 @@ class MainController {
 
     @PostMapping("/message")
     fun message(@RequestBody request: MessageRequest): MessageResponse {
-        val clientId: String = "z0z1bsbO8AeOgIZejE9P"
-        val clientSecret: String = "JT7cisjNYQ"
-        val restTemplate: RestTemplate = RestTemplate()
-        restTemplate.getForEntity("", String::class.java)
-        return MessageResponse(request.content?: "")
+        val text:String = when(request.content) {
+            "뭐해" -> "일하고있다ㅜㅜ"
+            "안녕" -> "안녕!"
+            else -> "Hello KaKao Bot!"
+        }
+        return MessageResponse(text)
     }
 }
