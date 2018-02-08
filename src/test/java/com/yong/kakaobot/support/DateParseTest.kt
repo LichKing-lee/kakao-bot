@@ -4,11 +4,13 @@ import junit.framework.Assert.assertEquals
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
 import org.jetbrains.spek.api.dsl.it
+import org.junit.Ignore
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.ZoneId
 import java.util.*
 
+@Ignore
 class DateParseTest: Spek({
     describe("parse test") {
         val target: String = "Sun, 04 Feb 2018 16:31:56 +0900"

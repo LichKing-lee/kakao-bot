@@ -17,6 +17,6 @@ data class Item(val title: String,
             감독 : ${director.split("|").joinToString()}
             출연진 : ${actor.split("|").joinToString()}
             예매율 : $userRating
-        """
+        """.trimIndent()
     }
 }
