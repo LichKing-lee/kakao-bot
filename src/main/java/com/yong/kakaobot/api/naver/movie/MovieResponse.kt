@@ -10,6 +10,6 @@ data class MovieResponse(@JsonDeserialize(using = LocalDateTimeDeserializer::cla
                          val display:Int,
                          val items: MutableList<Item>) {
     override fun toString(): String {
-        return items.joinToString(separator = "\n")
+        return items.joinToString(separator = "\n\n")
     }
 }
