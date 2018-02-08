@@ -37,4 +37,13 @@ class KotlinMainControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.message.text").value("일하고있다ㅜㅜ"))
     }
+
+    @Test
+    fun movie() {
+        mockMvc!!.perform(post("/message")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content("{\"user_key\":\"\",\"type\":\"text\",\"content\":\"영화 관상\"}"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo { print(it.response.contentAsString) }
+    }
 }

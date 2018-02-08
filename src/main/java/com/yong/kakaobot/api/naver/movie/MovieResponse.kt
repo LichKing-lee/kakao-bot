@@ -8,4 +8,8 @@ data class MovieResponse(@JsonDeserialize(using = LocalDateTimeDeserializer::cla
                          val total:Int,
                          val start:Int,
                          val display:Int,
-                         val items: MutableList<Item>)
+                         val items: MutableList<Item>) {
+    override fun toString(): String {
+        return items.joinToString(separator = "\n")
+    }
+}
