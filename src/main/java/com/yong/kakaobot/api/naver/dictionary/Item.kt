@@ -9,7 +9,7 @@ data class Item(val title: String,
     override fun toString(): String {
         return """
             이름 : ${ApiUtils.removeHtml(title)}
-            설명 : $description
+            설명 : ${ApiUtils.removeHtml(description)}
             더보기 : $link
         """.trimIndent()
     }
