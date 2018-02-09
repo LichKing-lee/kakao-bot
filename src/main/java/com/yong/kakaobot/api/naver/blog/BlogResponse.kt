@@ -5,7 +5,6 @@ import com.yong.kakaobot.api.naver.movie.support.LocalDateTimeDeserializer
 import java.time.LocalDateTime
 
 data class BlogResponse(@JsonDeserialize(using = LocalDateTimeDeserializer::class) val lastBuildDate: LocalDateTime,
-                        @JsonDeserialize(using = LocalDateTimeDeserializer::class) val postdate: LocalDateTime,
                         val total: Int,
                         val start: Int,
                         val display: Int,
