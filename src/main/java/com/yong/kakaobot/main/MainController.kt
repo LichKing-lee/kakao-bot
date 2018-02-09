@@ -2,6 +2,7 @@ package com.yong.kakaobot.main
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.yong.kakaobot.api.ApiCaller
+import com.yong.kakaobot.api.naver.blog.BlogResponse
 import com.yong.kakaobot.api.naver.dictionary.DictionaryResponse
 import com.yong.kakaobot.api.naver.movie.MovieResponse
 import com.yong.kakaobot.request.MessageRequest
@@ -35,12 +36,16 @@ class MainController {
 
         if (request.content!!.startsWith("영화")) {
             val response: MovieResponse = apiCaller.callForObject("https://openapi.naver.com/v1/search/movie.json", mapOf("query" to request.content!!.split(" ")[1]), MovieResponse::class.java)
-print(response.items[0].pubDate)
             return MessageResponse(response.toString())
         }
 
         if(request.content!!.startsWith("사전")) {
             val response: DictionaryResponse = apiCaller.callForObject("https://openapi.naver.com/v1/search/encyc.json", mapOf("query" to request.content!!.split(" ")[1]), DictionaryResponse::class.java)
+            return MessageResponse(response.toString())
+        }
+
+        if(request.content!!.startsWith("블로그")){
+            val response: BlogResponse = apiCaller.callForObject("https://openapi.naver.com/v1/search/blog.json", mapOf("query" to request.content!!.split(" ")[1]), BlogResponse::class.java)
             return MessageResponse(response.toString())
         }
 
