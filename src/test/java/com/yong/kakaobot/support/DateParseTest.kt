@@ -37,5 +37,9 @@ class DateParseTest: Spek({
             assertEquals(4, date.dayOfMonth)
             assertEquals(LocalTime.of(16, 31, 56), date.toLocalTime())
         }
+
+        it("random") {
+            println(Random().nextInt(3))
+        }
     }
 })

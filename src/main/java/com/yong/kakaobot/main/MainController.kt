@@ -12,19 +12,25 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 
 @RestController
 class MainController {
     @Autowired
     private lateinit var apiCaller: ApiCaller
 
+    private val keywords: List<String> = listOf("류다슬", "다슬")
+    private val responseMessages: List<String> = listOf("다슬이 안뇽?", "막내괴롭히고있낭", "모찌랑놀지마랍", "살찌고있낭", "팔공산오르고있낭", "퇴직금내놔랍", "쏠거강", "보고시포",
+            "야근하낭", "밥묵낭", "볼따구 부풀리낭")
+
     @GetMapping("/keyboard")
     fun keyboard(): KeyboardResponse = KeyboardResponse()
 
     @PostMapping("/message")
     fun message(@RequestBody request: MessageRequest): MessageResponse {
-        if(request.content == "류다슬"){
-            return MessageResponse("다슬이 안뇽?")
+        if(keywords.contains(request.content)){
+            val randomIdx = Random().nextInt(responseMessages.count())
+            return MessageResponse(responseMessages[randomIdx])
         }
 
         if (request.content!!.startsWith("영화")) {

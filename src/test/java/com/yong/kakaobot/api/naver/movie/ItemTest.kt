@@ -12,6 +12,5 @@ class ItemTest {
     @Test
     fun removeHtml() {
         assertThat(item.title, `is`("<b>title</b>"))
-        assertThat(item.removeHtml(item.title), `is`("title"))
     }
 }
