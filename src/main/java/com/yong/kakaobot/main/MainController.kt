@@ -23,6 +23,10 @@ class MainController {
 
     @PostMapping("/message")
     fun message(@RequestBody request: MessageRequest): MessageResponse {
+        if(request.content == "류다슬"){
+            return MessageResponse("다슬이 안뇽?")
+        }
+
         if (request.content!!.startsWith("영화")) {
             val response: MovieResponse = apiCaller.callForObject("https://openapi.naver.com/v1/search/movie.json", mapOf("query" to request.content!!.split(" ")[1]), MovieResponse::class.java)
 print(response.items[0].pubDate)
