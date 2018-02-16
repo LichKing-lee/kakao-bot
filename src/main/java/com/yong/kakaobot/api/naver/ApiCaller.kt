@@ -1,8 +1,6 @@
-package com.yong.kakaobot.api
+package com.yong.kakaobot.api.naver
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.HttpRequest
 import org.springframework.http.ResponseEntity
 import org.springframework.http.client.ClientHttpRequestExecution

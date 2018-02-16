@@ -12,8 +12,6 @@ class ApiContainer(naver: NaverService) {
     }
 
     fun of(key: String): NaverService {
-        val a = 3+3f
-        val ab = 3+3L
         return map.getOrElse(key, { NaverService() })
     }
 }

@@ -1,5 +1,6 @@
 package com.yong.kakaobot.api
 
+import com.yong.kakaobot.api.naver.ApiCaller
 import com.yong.kakaobot.api.naver.blog.BlogResponse
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.notNullValue

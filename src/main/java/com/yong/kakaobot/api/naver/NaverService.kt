@@ -1,6 +1,5 @@
 package com.yong.kakaobot.api.naver
 
-import com.yong.kakaobot.api.ApiCaller
 import com.yong.kakaobot.api.naver.blog.BlogResponse
 import com.yong.kakaobot.api.naver.dictionary.DictionaryResponse
 import com.yong.kakaobot.api.naver.movie.MovieResponse
