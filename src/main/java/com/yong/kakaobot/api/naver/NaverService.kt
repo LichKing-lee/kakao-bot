@@ -9,21 +9,21 @@ import org.springframework.stereotype.Service
 @Service
 class NaverService {
     @Autowired
-    private lateinit var apiCaller: ApiCaller
+    private lateinit var naverApiCaller: NaverApiCaller
 
     fun callToApi(keyword: String): String {
         if (keyword.startsWith("영화")) {
-            val response: MovieResponse = apiCaller.callForObject("https://openapi.naver.com/v1/search/movie.json", mapOf("query" to keyword.split(" ")[1]), MovieResponse::class.java)
+            val response: MovieResponse = naverApiCaller.callForObject("https://openapi.naver.com/v1/search/movie.json", mapOf("query" to keyword.split(" ")[1]), MovieResponse::class.java)
             return response.toString()
         }
 
         if(keyword.startsWith("사전")) {
-            val response: DictionaryResponse = apiCaller.callForObject("https://openapi.naver.com/v1/search/encyc.json", mapOf("query" to keyword.split(" ")[1]), DictionaryResponse::class.java)
+            val response: DictionaryResponse = naverApiCaller.callForObject("https://openapi.naver.com/v1/search/encyc.json", mapOf("query" to keyword.split(" ")[1]), DictionaryResponse::class.java)
             return response.toString()
         }
 
         if(keyword.startsWith("블로그")){
-            val response: BlogResponse = apiCaller.callForObject("https://openapi.naver.com/v1/search/blog.json", mapOf("query" to keyword.split(" ")[1]), BlogResponse::class.java)
+            val response: BlogResponse = naverApiCaller.callForObject("https://openapi.naver.com/v1/search/blog.json", mapOf("query" to keyword.split(" ")[1]), BlogResponse::class.java)
             return response.toString()
         }
 
