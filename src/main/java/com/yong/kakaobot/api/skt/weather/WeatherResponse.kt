@@ -1,4 +1,6 @@
 package com.yong.kakaobot.api.skt.weather
 
-class WeatherResponse {
-}
+
+data class WeatherResponse(val weather: Weather,
+                           val common: Common,
+                           val result: Result)
