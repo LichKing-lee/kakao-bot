@@ -83,9 +83,11 @@ class SktApiCallerTest {
 
     @Test
     fun callForObject() {
-        val response: WeatherResponse = caller.callForObject("https://api2.sktelecom.com/weather/current/hourly", mapOf("lat" to "37.5660649", "lon" to "126.9826791"), WeatherResponse::class.java)
+        val params = mapOf("city" to "서울", "county" to "동작구", "village" to "사당동")
+        val response: WeatherResponse = caller.callForObject("https://api2.sktelecom.com/weather/current/hourly", params, WeatherResponse::class.java)
 
         assertThat(response.result.code, `is`(9200))
         assertThat(response.result.message, `is`("성공"))
+        assertThat(response.weather.hourly[0].grid.city, `is`("서울"))
     }
 }

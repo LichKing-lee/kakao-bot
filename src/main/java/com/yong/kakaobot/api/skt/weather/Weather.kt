@@ -1,3 +1,5 @@
 package com.yong.kakaobot.api.skt.weather
 
-data class Weather(val hourly: MutableList<Hourly>)
+data class Weather(val hourly: MutableList<Hourly>) {
+    override fun toString(): String = ""
+}
