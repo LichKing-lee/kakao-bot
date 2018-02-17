@@ -92,5 +92,7 @@ class SktApiCallerTest {
         assertThat(response.result.code, `is`(9200))
         assertThat(response.result.message, `is`("성공"))
         assertThat(response.weather.hourly[0].grid.city, `is`("서울"))
+
+        print(response)
     }
 }
