@@ -2,6 +2,7 @@ package com.yong.kakaobot.api.skt
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.yong.kakaobot.api.ApiCaller
+import com.yong.kakaobot.api.skt.weather.PrecipitationType
 import com.yong.kakaobot.api.skt.weather.WeatherResponse
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.*
@@ -43,7 +44,7 @@ class SktApiCallerTest {
       },
       "precipitation": {
         "sinceOntime": "0.00",
-        "type": "0"
+        "type": "2"
       },
       "sky": {
         "code": "SKY_O03",
@@ -72,6 +73,8 @@ class SktApiCallerTest {
         """.trimIndent()
 
         val response: WeatherResponse = mapper.readValue(json, WeatherResponse::class.java)
+
+        assertThat(response.weather.hourly[0].precipitation.type, `is`(PrecipitationType.RAIN_SNOW))
     }
 
     @Test

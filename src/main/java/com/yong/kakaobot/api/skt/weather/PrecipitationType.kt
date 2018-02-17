@@ -1,6 +1,6 @@
 package com.yong.kakaobot.api.skt.weather
 
-enum class PrecipitationType(private val code: String) {
+enum class PrecipitationType(val code: String) {
     NONE("0"),
     RAIN("1"),
     RAIN_SNOW("2"),
