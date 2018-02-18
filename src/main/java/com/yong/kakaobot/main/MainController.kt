@@ -27,6 +27,10 @@ class MainController {
 
     @PostMapping("/message")
     fun message(@RequestBody request: MessageRequest): MessageResponse {
+        if(request.content == "사용법확인"){
+            return MessageResponse(helpMessage())
+        }
+
         if(keywords.contains(request.content)){
             val randomIdx = Random().nextInt(responseMessages.count())
             return MessageResponse(responseMessages[randomIdx])
