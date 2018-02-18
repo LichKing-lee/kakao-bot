@@ -22,10 +22,14 @@ class SktService: ApiService {
     }
 
     private fun createParams(keywords: List<String>): Map<String, String> {
-        if(keywords.count() < 4) {
-            return DEFAULT_PARAMS
+        if(keywords.count() == 4) {
+            return mapOf("city" to keywords[1], "county" to keywords[2], "village" to keywords[3])
         }
 
-        return mapOf("city" to keywords[1], "county" to keywords[2], "village" to keywords[3])
+        if(keywords.count() == 5) {
+            return mapOf("city" to keywords[1], "county" to "${keywords[2]} ${keywords[3]}", "village" to keywords[4])
+        }
+
+        return DEFAULT_PARAMS
     }
 }
