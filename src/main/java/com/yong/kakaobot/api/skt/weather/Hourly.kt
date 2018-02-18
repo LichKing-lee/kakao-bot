@@ -10,11 +10,5 @@ data class Hourly(val grid: Grid,
                   private val sky: Sky,
                   private val temperature: Temperature,
                   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") private val timeRelease: LocalDateTime) {
-    override fun toString(): String = """
-        $grid
-        $precipitation
-        $sky
-        $temperature
-        갱신시각 : $timeRelease
-    """.trimIndent()
+    override fun toString(): String = "$grid\n$precipitation\n$sky\n$temperature\n갱신시각 : $timeRelease"
 }

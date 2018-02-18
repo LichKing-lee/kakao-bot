@@ -46,4 +46,13 @@ class KotlinMainControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andDo { print(it.response.contentAsString) }
     }
+
+    @Test
+    fun weather() {
+        mockMvc!!.perform(post("/message")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content("{\"user_key\":\"\",\"type\":\"text\",\"content\":\"날씨\"}"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo { print(it.response.contentAsString) }
+    }
 }

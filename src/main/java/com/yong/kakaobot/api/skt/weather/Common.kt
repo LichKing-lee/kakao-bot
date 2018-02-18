@@ -5,7 +5,7 @@ data class Common(private val alertYn: String,
     override fun toString(): String = """
         특보유무 : ${if(castBoolean(alertYn)) "특보있음" else "특보없음"}
         태풍유무 : ${if(castBoolean(stormYn)) "태풍있음" else "태풍없음"}
-    """.trimMargin()
+    """.trimIndent()
 
     private fun castBoolean(str: String): Boolean = str != "N"
 }
